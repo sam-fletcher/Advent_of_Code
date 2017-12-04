@@ -33,3 +33,21 @@ for line in lines:
             if x%y == 0:
                 sum += x/y
 print("Day 2-2: "+str(sum))
+
+### Day 3-1 ###
+input = 1024
+steps = 0
+square = 1
+while square**2 < input:
+    steps += 1
+    square += 2
+perim = square**2 - (square-1)**2
+length = int(perim/4)
+diff = square**2 - input - length/2 # shift it from a corner to a midpoint
+print(square)
+print(length)
+print(diff)
+dist_to_midpoint = min(diff % length, length - (diff % length))
+print(dist_to_midpoint)
+steps += dist_to_midpoint # straight line to the middle of the ring perimeter
+print(steps)
