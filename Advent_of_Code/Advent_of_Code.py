@@ -6,6 +6,7 @@ for c in range(0, len(input)):
         count += int(input[c])
 print("Day 1-1: "+str(count))
 
+
 ''' Day 1-2 '''
 count = 0
 half = len(input)//2
@@ -13,6 +14,7 @@ for c in range(0, len(input)-1):
     if input[c] == input[(c+half) % len(input)]:
         count += int(input[c])
 print("Day 1-2: "+str(count))
+
 
 ''' Day 2-1 '''
 input = "409,194,207,470,178,454,235,333,511,103,474,293,525,372,408,428\n4321,2786,6683,3921,265,262,6206,2207,5712,214,6750,2742,777,5297,3764,167\n3536,2675,1298,1069,175,145,706,2614,4067,4377,146,134,1930,3850,213,4151\n2169,1050,3705,2424,614,3253,222,3287,3340,2637,61,216,2894,247,3905,214\n99,797,80,683,789,92,736,318,103,153,749,631,626,367,110,805\n2922,1764,178,3420,3246,3456,73,2668,3518,1524,273,2237,228,1826,182,2312\n2304,2058,286,2258,1607,2492,2479,164,171,663,62,144,1195,116,2172,1839\n114,170,82,50,158,111,165,164,106,70,178,87,182,101,86,168\n121,110,51,122,92,146,13,53,34,112,44,160,56,93,82,98\n4682,642,397,5208,136,4766,180,1673,1263,4757,4680,141,4430,1098,188,1451\n158,712,1382,170,550,913,191,163,459,1197,1488,1337,900,1182,1018,337\n4232,236,3835,3847,3881,4180,4204,4030,220,1268,251,4739,246,3798,1885,3244\n169,1928,3305,167,194,3080,2164,192,3073,1848,426,2270,3572,3456,217,3269\n140,1005,2063,3048,3742,3361,117,93,2695,1529,120,3480,3061,150,3383,190\n489,732,57,75,61,797,266,593,324,475,733,737,113,68,267,141\n3858,202,1141,3458,2507,239,199,4400,3713,3980,4170,227,3968,1688,4352,4168"
@@ -24,6 +26,7 @@ for line in lines:
     count += max(line) - min(line)
 print("Day 2-1: "+str(count))
 
+
 ''' Day 2-2 '''
 count = 0
 for line in lines:
@@ -33,6 +36,7 @@ for line in lines:
             if x%y == 0:
                 count += x/y
 print("Day 2-2: "+str(count))
+
 
 ''' Day 3-1 '''
 input = 277678
@@ -47,6 +51,7 @@ length = perim//4
 dist_to_midpoint = abs( length/2 - (extra % length) )
 steps += dist_to_midpoint # straight line to the middle of the ring perimeter
 print("Day 3-1: "+str(steps))
+
 
 ''' Day 3-2 '''
 input = 277678
@@ -80,3 +85,64 @@ def spiral(width, height):
                 return matrix # nowhere to go
 
 print("Day 3-2: "+str(spiral(12,12))) # 12,12 hits everything below 8 million
+
+
+''' Day 4-1 '''
+count = 0
+with open('Day4.txt') as f:
+    data = f.read()
+    lines = data.split('\n')
+    for line in lines:
+        words = line.split(' ')
+        if len(words) == len(set(words)):
+            count += 1
+print("Day 4-1: "+str(count))
+
+
+''' Day 4-2 '''
+count = 0
+with open('Day4.txt') as f:
+    data = f.read()
+    lines = data.split('\n')
+    for line in lines:
+        words = line.split(' ')
+        letters = [''.join(sorted(word)) for word in words]
+        if len(letters) == len(set(letters)):
+            count += 1
+print("Day 4-2: "+str(count))
+
+
+''' Day 5-1 '''
+count = 0
+pos = 0
+with open('Day5.txt') as f:
+    data = f.read()
+    lines = data.split('\n')
+    jumps = [int(x) for x in lines]
+    while pos < len(jumps):
+        count += 1
+        jump = jumps[pos]
+        jumps[pos] += 1
+        pos += jump
+print("Day 5-1: "+str(count))
+
+
+''' Day 5-2 '''
+import time
+start = time.time()
+count = 0
+pos = 0
+with open('Day5.txt') as f:
+    data = f.read()
+    lines = data.split('\n')
+    jumps = [int(x) for x in lines]
+    while pos < len(jumps):
+        count += 1
+        jump = jumps[pos]
+        if jumps[pos] < 3:
+            jumps[pos] += 1
+        else:
+            jumps[pos] -= 1
+        pos += jump
+print("Day 5-2: "+str(count))
+print(time.time() - start)
