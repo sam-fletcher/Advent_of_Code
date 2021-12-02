@@ -14,7 +14,7 @@ func main() {
 		fmt.Println(err)
 	}
 	fmt.Println("Part 2:")
-	err := day1(3)
+	err = day1(3)
 	if err != nil {
 		fmt.Println(err)
 	}
