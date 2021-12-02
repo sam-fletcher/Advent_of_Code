@@ -37,7 +37,6 @@ func day1(windowSize int) error {
 		nums = append(nums, x)
 	}
 	count := 0
-	fmt.Println(len(nums))
 	for i := windowSize; i < len(nums); i++ {
 		prev := nums[i-windowSize : i]
 		next := nums[i+1-windowSize : i+1]
