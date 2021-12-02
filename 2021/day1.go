@@ -15,6 +15,9 @@ func main() {
 	}
 	fmt.Println("Part 2:")
 	err := day1(3)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 func day1(windowSize int) error {
