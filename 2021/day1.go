@@ -8,10 +8,13 @@ import (
 )
 
 func main() {
-	err := day1(3)
+	fmt.Println("Part 1:")
+	err := day1(1)
 	if err != nil {
 		fmt.Println(err)
 	}
+	fmt.Println("Part 2:")
+	err := day1(3)
 }
 
 func day1(windowSize int) error {
